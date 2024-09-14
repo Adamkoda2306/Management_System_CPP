@@ -85,7 +85,7 @@ void Student_Menu::Display_Books(){
     vector<Book> BooksList;
     if(BooksList.empty()){
         Book books;
-        BooksList = books.ReadBook_from_File("Books.txt");
+        BooksList = books.ReadBook_from_File("Data/Books.txt");
     }
     int j=0;
     addVerticalPadding(padding/5);
@@ -107,7 +107,7 @@ void Student_Menu::Search_Book_Name(){
     getline(cin, name);
     if(BooksList.empty()){
         Book books;
-        BooksList = books.ReadBook_from_File("Books.txt");
+        BooksList = books.ReadBook_from_File("Data/Books.txt");
     }
     system(CLEAR);
     addVerticalPadding(padding/5);
@@ -131,7 +131,7 @@ void Student_Menu::Search_Book_ISBN(){
     getline(cin, isbn);
     if(BooksList.empty()){
         Book books;
-        BooksList = books.ReadBook_from_File("Books.txt");
+        BooksList = books.ReadBook_from_File("Data/Books.txt");
     }
     system(CLEAR);
     addVerticalPadding(padding/5);
@@ -157,7 +157,7 @@ void Student_Menu::Login_to_Menu(){
     printCentered(Blue "Enter Password: " Default);
     cin>>password;
     cin.ignore(); 
-    profilesList = StoreProfiles("Student_Profiles.txt");
+    profilesList = StoreProfiles("Data/Student_Profiles.txt");
     int i=0;
     while(profilesList[i].Username != username && profilesList[i].Password != password){
         i++;

@@ -34,8 +34,6 @@ void Menu::Student_Login() {
         cout<<endl;
         printCentered("3. Go to Main Menu");
         cout<<endl;
-        printCentered("4. Exit Application");
-        cout<<endl;
         printCentered(Blue "Enter Option: " Default);
         int op;
         cin>>op;
@@ -43,7 +41,7 @@ void Menu::Student_Login() {
             case 1: {
                 system(CLEAR);
                 addVerticalPadding(padding/5);
-                student_menu.CreateProfile("Student_Profiles.txt");
+                student_menu.CreateProfile("Data/Student_Profiles.txt");
                 printCentered("Press Enter to continue...");
                 cin.ignore();
                 cin.get();
@@ -58,13 +56,6 @@ void Menu::Student_Login() {
             case 3: {
                 exitStudentMenu = true;
                 break;
-            }
-            case 4: {
-                system(CLEAR);
-                addVerticalPadding(15);
-                printCentered(Green "Thank You For Using This Application." Default);
-                cout<<endl;
-                return;
             }
             default: {
                 addVerticalPadding(padding/5);
