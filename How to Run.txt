@@ -1,0 +1,5 @@
+for compiling:
+g++ Management_System.cpp Pages/*.cpp -o Management_System
+
+for running:
+./Management_System

@@ -1,0 +1,70 @@
+Book Name: Data Structures and Algorithms
+ISBN: dsalg456
+Year: 2019
+Shelf: 1
+Row: 2
+Book Number: 7
+-----------------------------
+Book Name: Introduction to Java
+ISBN: java789
+Year: 2020
+Shelf: 2
+Row: 5
+Book Number: 11
+-----------------------------
+Book Name: Advanced C++ Programming
+ISBN: cpp7890
+Year: 2018
+Shelf: 3
+Row: 1
+Book Number: 15
+-----------------------------
+Book Name: Database Systems
+ISBN: dbs101
+Year: 2021
+Shelf: 4
+Row: 4
+Book Number: 22
+-----------------------------
+Book Name: Operating Systems Concepts
+ISBN: osc202
+Year: 2017
+Shelf: 5
+Row: 3
+Book Number: 8
+-----------------------------
+Book Name: Software Engineering
+ISBN: se303
+Year: 2019
+Shelf: 6
+Row: 2
+Book Number: 12
+-----------------------------
+Book Name: Computer Networks
+ISBN: cn404
+Year: 2020
+Shelf: 7
+Row: 6
+Book Number: 19
+-----------------------------
+Book Name: Artificial Intelligence
+ISBN: ai505
+Year: 2021
+Shelf: 8
+Row: 1
+Book Number: 25
+-----------------------------
+Book Name: Web Development with Python
+ISBN: wdpy606
+Year: 2018
+Shelf: 9
+Row: 4
+Book Number: 30
+-----------------------------
+Book Name: Machine Learning Fundamentals
+ISBN: ml707
+Year: 2022
+Shelf: 10
+Row: 5
+Book Number: 35
+-----------------------------
