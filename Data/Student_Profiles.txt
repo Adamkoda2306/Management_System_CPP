@@ -1,13 +1,6 @@
 Username: Adam
-Password: 12345678
-Books Rented: 0
------------------------------
-
-Username: Bhanu
-Password: bhanu123
-Books Rented: 0
------------------------------
-Username: Mahendra
-Password: mahi123
+Password: adam123
+Email: adam.k23@iiits.in
+PhoneNumber: 7842487664
 Books Rented: 0
 -----------------------------

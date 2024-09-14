@@ -101,5 +101,5 @@
     "typeinfo": "cpp"
   },
   "C_Cpp.dimInactiveRegions": false,
-  "C_Cpp.errorSquiggles": "disabled"
+  "C_Cpp.errorSquiggles": "enabled"
 }

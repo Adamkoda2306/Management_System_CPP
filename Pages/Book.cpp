@@ -64,6 +64,7 @@ void Book::WriteBook_to_File(const string& filename){
     outputFile<<"-----------------------------"<<endl;  // Separator between entries
 
     outputFile.close();
+    printCentered(Blue "Book Added!!!\n\n" Default);
 }
 
 void Book::DisplayBook(){

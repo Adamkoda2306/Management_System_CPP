@@ -1,16 +1,9 @@
-Book Name: Data Structures and Algorithms
-ISBN: dsa456
-Year: 2019
-Shelf: 1
-Row: 2
-Book Number: 7
------------------------------
 Book Name: Introduction to Java
 ISBN: java789
 Year: 2020
-Shelf: 2
+Shelf: 3
 Row: 5
-Book Number: 11
+Book Number: 12
 -----------------------------
 Book Name: Advanced C++ Programming
 ISBN: cpp7890
@@ -67,4 +60,123 @@ Year: 2022
 Shelf: 10
 Row: 5
 Book Number: 35
+-----------------------------
+Book Name: ML & AIDS Notes
+ISBN: aids123
+Year: 2021
+Shelf: 4
+Row: 3
+Book Number: 2
+-----------------------------
+Book Name: ML Notes
+ISBN: ml345
+Year: 2020
+Shelf: 3
+Row: 4
+Book Number: 5
+-----------------------------
+Book Name: Principles of Compiler Design
+ISBN: comp567
+Year: 2015
+Shelf: 2
+Row: 6
+Book Number: 10
+-----------------------------
+Book Name: Data Structures and Algorithms
+ISBN: dsa678
+Year: 2019
+Shelf: 1
+Row: 3
+Book Number: 8
+-----------------------------
+Book Name: Networking Essentials
+ISBN: net789
+Year: 2021
+Shelf: 4
+Row: 2
+Book Number: 14
+-----------------------------
+Book Name: Computer Architecture
+ISBN: arch890
+Year: 2018
+Shelf: 5
+Row: 1
+Book Number: 11
+-----------------------------
+Book Name: Cloud Computing
+ISBN: cloud123
+Year: 2020
+Shelf: 6
+Row: 5
+Book Number: 16
+-----------------------------
+Book Name: Human-Computer Interaction
+ISBN: hci456
+Year: 2017
+Shelf: 7
+Row: 4
+Book Number: 13
+-----------------------------
+Book Name: Quantum Computing
+ISBN: qc789
+Year: 2022
+Shelf: 8
+Row: 6
+Book Number: 20
+-----------------------------
+Book Name: Mobile Application Development
+ISBN: mad987
+Year: 2021
+Shelf: 9
+Row: 3
+Book Number: 9
+-----------------------------
+Book Name: Internet of Things
+ISBN: iot654
+Year: 2021
+Shelf: 10
+Row: 7
+Book Number: 12
+-----------------------------
+Book Name: Big Data Analytics
+ISBN: bda345
+Year: 2019
+Shelf: 2
+Row: 4
+Book Number: 15
+-----------------------------
+Book Name: Cybersecurity Basics
+ISBN: cyber101
+Year: 2018
+Shelf: 3
+Row: 7
+Book Number: 17
+-----------------------------
+Book Name: Blockchain Technology
+ISBN: block202
+Year: 2022
+Shelf: 4
+Row: 5
+Book Number: 22
+-----------------------------
+Book Name: Database Management Systems
+ISBN: dbms123
+Year: 2020
+Shelf: 5
+Row: 6
+Book Number: 18
+-----------------------------
+Book Name: Software Development Life Cycle
+ISBN: sdlc456
+Year: 2021
+Shelf: 6
+Row: 4
+Book Number: 14
+-----------------------------
+Book Name: Web Technologies
+ISBN: web789
+Year: 2020
+Shelf: 7
+Row: 5
+Book Number: 19
 -----------------------------

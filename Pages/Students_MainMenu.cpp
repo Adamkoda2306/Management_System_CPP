@@ -33,12 +33,41 @@ void Student_Menu::CreateProfile(const string& filename){
     cin>>profile.Username;
     printCentered(Blue "Enter Password: " Default);
     cin>>profile.Password;
+    printCentered(Blue "Enter Email: " Default);
+    cin>>profile.Email;
+    printCentered(Blue "Enter PhoneNumber: " Default);
+    cin>>profile.PhoneNumber;
     profile.Books_rented = 0;
     outputFile<<"Username: "<<profile.Username<<endl;
     outputFile<<"Password: "<<profile.Password<<endl;
+    outputFile<<"Email: "<<profile.Email<<endl;
+    outputFile<<"PhoneNumber: "<<profile.PhoneNumber<<endl;
     outputFile<<"Books Rented: "<<profile.Books_rented<<endl;
-    outputFile<<"-----------------------------"<<endl;  // Separator between entries
+    outputFile<<"-----------------------------"<<endl;
 
+    outputFile.close();
+}
+
+void Student_Menu::UpdateProfile_BookRented(Profile student, bool issue){
+    profile_Details = StoreProfiles("Data/Student_Profiles.txt");
+    ofstream outputFile("Data/Student_Profiles.txt",ios::out | ios::trunc);
+    if (!outputFile.is_open()) {
+        cerr<<"Error opening file for writing!"<<endl;
+        return;
+    }
+    for(Profile &i: profile_Details){
+        if(i.Username == student.Username && issue){
+            i.Books_rented++;
+        }else if(i.Username == student.Username && !issue){
+            i.Books_rented--;
+        }
+        outputFile<<"Username: "<<i.Username<<endl;
+        outputFile<<"Password: "<<i.Password<<endl;
+        outputFile<<"Email: "<<i.Email<<endl;
+        outputFile<<"PhoneNumber: "<<i.PhoneNumber<<endl;
+        outputFile<<"Books Rented: "<<i.Books_rented<<endl;
+        outputFile<<"-----------------------------"<<endl;
+    }
     outputFile.close();
 }
 
@@ -57,6 +86,10 @@ vector<Profile> Student_Menu::StoreProfiles(const string& filename){
             newProfile.Username = line.substr(line.find(":") + 2);  // Extract book name
         } else if (line.find("Password:") != string::npos) {
             newProfile.Password = line.substr(line.find(":") + 2);  // Extract ISBN
+        } else if (line.find("Email:") != string::npos) {
+            newProfile.Email = line.substr(line.find(":") + 2);  // Extract Email
+        } else if (line.find("PhoneNumber:") != string::npos) {
+            newProfile.PhoneNumber = line.substr(line.find(":") + 2);  // Extract PhoneNumber
         } else if (line.find("Books Rented:") != string::npos) {
             newProfile.Books_rented = stoi(line.substr(line.find(":") + 2));  // Extract Year
         }
@@ -71,11 +104,27 @@ vector<Profile> Student_Menu::StoreProfiles(const string& filename){
     return profiles_list;
 }
 
+Profile Student_Menu::SearchProfile(string Name){
+    vector<Profile> profiles_list;
+    profiles_list = StoreProfiles("Data/Student_Profiles.txt");
+    for(Profile i: profiles_list){
+        if(i.Username == Name){
+            return i;
+        }
+    }
+    printCentered(Red "Profile Not Found!!\n\n" Default);
+    return Profile();
+}
+
 void Student_Menu::DisplayProfile(Profile user){
     printCentered(Green "Student Profile: " Default);
     cout<<endl<<endl;
     printCentered("UserName: ");
     cout<<Blue<<user.Username<<Default<<endl;
+    printCentered("Email: ");
+    cout<<Blue<<user.Email<<Default<<endl;
+    printCentered("PhoneNumber: ");
+    cout<<Blue<<user.PhoneNumber<<Default<<endl;
     printCentered("Books Rented: ");
     cout<<Blue<<user.Books_rented<<Default<<endl;
     printCentered("________________________________________");

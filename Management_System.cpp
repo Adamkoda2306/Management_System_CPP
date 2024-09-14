@@ -71,4 +71,5 @@ int main(){
         cin.ignore();
         cin.get();
     }
+    return 0;
 }

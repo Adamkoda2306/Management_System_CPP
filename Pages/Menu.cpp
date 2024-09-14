@@ -88,10 +88,8 @@ void Menu::Librarian_Login() {
         switch (op) {
             case 1: {
                 system(CLEAR);
-                admin_menu.wish();
-                printCentered("Press Enter to continue...");
-                cin.ignore();
-                cin.get();
+                addVerticalPadding(padding/5);
+                admin_menu.Login_to_AdminMenu();
                 break;
             }
             case 2: {
