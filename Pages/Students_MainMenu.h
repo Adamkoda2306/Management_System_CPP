@@ -1,11 +1,15 @@
+// Student_Mainmenu.h Header file
 #ifndef STUDENTS_MAINMENU_H
 #define STUDENTS_MAINMENU_H
 
+#include<string>//for strings
+#include<vector>//for vectors
+
+//user defined Header Files
 #include "Book.h"
-#include<string>
-#include<vector>
 using namespace std;
 
+// Profile structure
 struct Profile{
     string Username;
     string Password;
@@ -16,8 +20,10 @@ struct Profile{
 
 class Student_Menu{
 private:
+    //private variable
     vector<Profile> profile_Details;
 public:
+    //function for this Header file
     void CreateProfile(const string& filename);
     void UpdateProfile_BookRented(Profile student, bool issue);
     vector<Profile> StoreProfiles(const string& filename);

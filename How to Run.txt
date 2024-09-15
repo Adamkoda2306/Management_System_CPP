@@ -3,3 +3,7 @@ g++ *.cpp Pages/*.cpp -o Management_System
 
 for running:
 ./Management_System
+
+for changing the terminal text color usinng cout:
+cout<<Red<<"Hello World!!"<<Default<<endl;
+where Red, Default are the color codes for terminal

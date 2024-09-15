@@ -1,26 +1,29 @@
 #include<iostream>
-#include<cstdlib>
-#include<string>
-#include<vector>
+#include<cstdlib>//for system()
+#include<string>//for strings
+#include<vector>//for vectors
 
+// Checks if the system is Window or Linux
 #ifdef _WIN32
     #define CLEAR "cls"
 #else
     #define CLEAR "clear"
 #endif
 
+//Terminal text colors
 #define Red "\033[31m"
 #define Default "\033[0m"
 #define Green "\033[38;5;28m"
 #define lightGreen "\033[32m"
 #define Blue "\033[34m"
 
+//user defined Header files
 #include "TerminalUtils.h"
 #include "Students_MainMenu.h"
 #include "Book.h"
 using namespace std;
 
-
+// function for creating the new profile and adding it to the profile.txt file
 void Student_Menu::CreateProfile(const string& filename){
     ofstream outputFile(filename,ios::app);  // Append mode to add new books
 
@@ -28,6 +31,7 @@ void Student_Menu::CreateProfile(const string& filename){
         cerr<<"Error opening file for writing!"<<endl;
         return;
     }
+    //giving the data of the new user
     Profile profile;
     printCentered(Blue "Enter Username: " Default);
     cin>>profile.Username;
@@ -38,6 +42,7 @@ void Student_Menu::CreateProfile(const string& filename){
     printCentered(Blue "Enter PhoneNumber: " Default);
     cin>>profile.PhoneNumber;
     profile.Books_rented = 0;
+    // writing it to the file
     outputFile<<"Username: "<<profile.Username<<endl;
     outputFile<<"Password: "<<profile.Password<<endl;
     outputFile<<"Email: "<<profile.Email<<endl;
@@ -48,19 +53,21 @@ void Student_Menu::CreateProfile(const string& filename){
     outputFile.close();
 }
 
+// function for changing the variable of book rented in the profile
 void Student_Menu::UpdateProfile_BookRented(Profile student, bool issue){
-    profile_Details = StoreProfiles("Data/Student_Profiles.txt");
-    ofstream outputFile("Data/Student_Profiles.txt",ios::out | ios::trunc);
+    profile_Details = StoreProfiles("Data/Student_Profiles.txt");//storing all profiles
+    ofstream outputFile("Data/Student_Profiles.txt",ios::out | ios::trunc);//opening the file for overwriting
     if (!outputFile.is_open()) {
         cerr<<"Error opening file for writing!"<<endl;
         return;
     }
     for(Profile &i: profile_Details){
         if(i.Username == student.Username && issue){
-            i.Books_rented++;
+            i.Books_rented++;//if book issued
         }else if(i.Username == student.Username && !issue){
-            i.Books_rented--;
+            i.Books_rented--;//if book returned
         }
+        // writing it to the file
         outputFile<<"Username: "<<i.Username<<endl;
         outputFile<<"Password: "<<i.Password<<endl;
         outputFile<<"Email: "<<i.Email<<endl;
@@ -71,6 +78,7 @@ void Student_Menu::UpdateProfile_BookRented(Profile student, bool issue){
     outputFile.close();
 }
 
+//This function returns the Vector of profiles format which are read from the file
 vector<Profile> Student_Menu::StoreProfiles(const string& filename){
     ifstream inputFile(filename);
     vector<Profile> profiles_list;
@@ -81,6 +89,7 @@ vector<Profile> Student_Menu::StoreProfiles(const string& filename){
 
     string line;
     Profile newProfile;
+    // Reads specific data from the file like it takes the values from the file
     while (getline(inputFile, line)) {
         if (line.find("Username:") != string::npos) {
             newProfile.Username = line.substr(line.find(":") + 2);  // Extract book name
@@ -95,8 +104,9 @@ vector<Profile> Student_Menu::StoreProfiles(const string& filename){
         }
 
         if (line.find("-----------------------------") != string::npos) {
-            profiles_list.push_back(newProfile);
-            newProfile= Profile();
+            // it push the data into the vector if it find this line
+            profiles_list.push_back(newProfile); // Add profile to vector
+            newProfile= Profile(); // Reset newProfile for next profile
         }
     }
 
@@ -104,18 +114,20 @@ vector<Profile> Student_Menu::StoreProfiles(const string& filename){
     return profiles_list;
 }
 
+// function for searching the user profile by name
 Profile Student_Menu::SearchProfile(string Name){
     vector<Profile> profiles_list;
     profiles_list = StoreProfiles("Data/Student_Profiles.txt");
     for(Profile i: profiles_list){
         if(i.Username == Name){
-            return i;
+            return i;//if found return the proile
         }
     }
     printCentered(Red "Profile Not Found!!\n\n" Default);
-    return Profile();
+    return Profile();// return null profile=> profile which is resetted
 }
 
+// function for displaying the profile
 void Student_Menu::DisplayProfile(Profile user){
     printCentered(Green "Student Profile: " Default);
     cout<<endl<<endl;
@@ -130,6 +142,7 @@ void Student_Menu::DisplayProfile(Profile user){
     printCentered("________________________________________");
 }
 
+// function for displaying the all books
 void Student_Menu::Display_Books(){
     vector<Book> BooksList;
     if(BooksList.empty()){
@@ -143,25 +156,29 @@ void Student_Menu::Display_Books(){
     for(Book i: BooksList){
         printCentered("Book No: ");
         cout<<Blue<<++j<<Default<<endl;
-        i.DisplayBook();
+        i.DisplayBook();//using the display book function created in book.h header file
         printCentered("____________________________________________");
         cout<<endl<<endl;
     }
 }
 
+// function for searching the book using bookname
 void Student_Menu::Search_Book_Name(){
     vector<Book> BooksList;
+    //taking the bookname for searching
     string name;
     printCentered(Blue "Enter Book Name: " Default);
     getline(cin, name);
     if(BooksList.empty()){
         Book books;
+        // storing the book data using the readbookfromfile function defined in the book.h Header
         BooksList = books.ReadBook_from_File("Data/Books.txt");
     }
     system(CLEAR);
     addVerticalPadding(padding/5);
     for(Book i: BooksList){
         if(i.newBook.Name == name){
+            // if found displaying the book
             printCentered(Green "Book Found!" Default);
             cout<<endl<<endl;
             i.DisplayBook();
@@ -173,19 +190,23 @@ void Student_Menu::Search_Book_Name(){
     cout<<endl;
 }
 
+// function for searching the book using isbn
 void Student_Menu::Search_Book_ISBN(){
     vector<Book> BooksList;
+    //taking the isbn for searching
     string isbn;
     printCentered(Blue "Enter Book ISBN: " Default);
     getline(cin, isbn);
     if(BooksList.empty()){
         Book books;
+        // storing the book data using the readbookfromfile function defined in the book.h Header
         BooksList = books.ReadBook_from_File("Data/Books.txt");
     }
     system(CLEAR);
     addVerticalPadding(padding/5);
     for(Book i: BooksList){
         if(i.newBook.ISBN == isbn){
+            // if found displaying the book
             printCentered(Green "Book Found!" Default);
             cout<<endl<<endl;
             i.DisplayBook();
@@ -197,6 +218,7 @@ void Student_Menu::Search_Book_ISBN(){
     cout<<endl;
 }
 
+// Main Screen Of the Student
 void Student_Menu::Login_to_Menu(){
     string username;
     vector<Profile> profilesList;
@@ -208,14 +230,17 @@ void Student_Menu::Login_to_Menu(){
     cin.ignore(); 
     profilesList = StoreProfiles("Data/Student_Profiles.txt");
     int i=0;
+    // checking the username and password in the profiles.txt file
     while(profilesList[i].Username != username && profilesList[i].Password != password){
         i++;
     }
+    // only Opens when you give the correct password and username
     if(profilesList[i].Username == username && profilesList[i].Password == password){
         bool exitStudentMenu = false;
         while (!exitStudentMenu) {
             system(CLEAR);
             addVerticalPadding(padding/5);
+            // Menu of Student
             printCentered(Green "Student Menu" Default);
             cout<<endl<<endl;
             printCentered("1. Display Profile");
@@ -236,6 +261,7 @@ void Student_Menu::Login_to_Menu(){
                 case 1: {
                     system(CLEAR);
                     addVerticalPadding(padding/5);
+                    // Display profile function
                     DisplayProfile(profilesList[i]);
                     cout<<endl;
                     printCentered("Press Enter to continue...");
@@ -246,6 +272,7 @@ void Student_Menu::Login_to_Menu(){
                 case 2: {
                     system(CLEAR);
                     addVerticalPadding(padding/5);
+                    //display all books function
                     Display_Books();
                     cout<<endl;
                     printCentered("Press Enter to continue...");
@@ -256,6 +283,7 @@ void Student_Menu::Login_to_Menu(){
                 case 3: {
                     system(CLEAR);
                     addVerticalPadding(padding/5);
+                    //search book by name function
                     Search_Book_Name();
                     cout<<endl;
                     printCentered("Press Enter to continue...");
@@ -266,6 +294,7 @@ void Student_Menu::Login_to_Menu(){
                 case 4: {
                     system(CLEAR);
                     addVerticalPadding(padding/5);
+                    //search book by isbn function
                     Search_Book_ISBN();
                     cout<<endl;
                     printCentered("Press Enter to continue...");
@@ -274,10 +303,12 @@ void Student_Menu::Login_to_Menu(){
                     break;
                 }
                 case 5: {
+                    // Exits the Student Menu and goes to the login screen of Student
                     exitStudentMenu = true;
                     break;
                 }
                 default: {
+                    // invalid option handling
                     printCentered(Red "Invalid option. Please try again." Default);
                     cout<<endl;
                     printCentered("Press Enter to continue...");
@@ -290,6 +321,7 @@ void Student_Menu::Login_to_Menu(){
     }else{
         system(CLEAR);
         addVerticalPadding(padding/5);
+        // goes to the login page of Student
         printCentered(Red "Invalid user or Password. Create New Profile." Default);
         cout<<endl;
         printCentered("Press Enter to continue...");
