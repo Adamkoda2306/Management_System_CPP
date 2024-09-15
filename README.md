@@ -46,7 +46,7 @@ Librarian Login pass: admin123
 ├── Data/
 |   ├── Books.txt                  # Persistent storage for book details
 |   ├── Issued_Books.txt            # Persistent storage for issued book records
-|   ├── Student_Profiles.txt                  # Persistent storage for book details
+|   ├── Student_Profiles.txt          # Persistent storage for Student Profiles details
 |
 └── Management_System.cpp                   # Main program file
 ```
